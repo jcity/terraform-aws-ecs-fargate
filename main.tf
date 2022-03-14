@@ -73,8 +73,8 @@ module "td" {
 # ECS Service
 #------------------------------------------------------------------------------
 module "ecs-fargate-service" {
-  source  = "cn-terraform/ecs-fargate-service/aws"
-  version = "2.0.23"
+  source = "git::https://github.com/jcity/terraform-aws-ecs-fargate-service"
+  # version = "2.0.23"
   # source  = "../terraform-aws-ecs-fargate-service"
 
   name_prefix = var.name_prefix
@@ -85,6 +85,7 @@ module "ecs-fargate-service" {
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   desired_count                      = var.desired_count
   enable_ecs_managed_tags            = var.enable_ecs_managed_tags
+  enable_execute_command             = var.enable_execute_command
   health_check_grace_period_seconds  = var.health_check_grace_period_seconds
   ordered_placement_strategy         = var.ordered_placement_strategy
   placement_constraints              = var.ecs_service_placement_constraints
